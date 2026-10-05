@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: student-academic-platform
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: student-academic-platform
+  template:
+    metadata:
+      labels:
+        app: student-academic-platform
+    spec:
+      containers:
+        - name: student-academic-platform
+          image: student-academic-platform:v1.0.0
+          imagePullPolicy: Never
+          ports:
+            - containerPort: 5000
+          readinessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 5
+            periodSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: /health
+              port: 5000
+            initialDelaySeconds: 10
+            periodSeconds: 15
