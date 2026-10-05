@@ -7,3 +7,4 @@ htmlcov/
 *.log
 .env
 .DS_Store
+database/*.db
