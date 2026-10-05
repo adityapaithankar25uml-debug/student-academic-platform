@@ -37,7 +37,7 @@ pipeline {
             steps {
                 sh '''
                     . .jenkins-venv/bin/activate
-                    pytest -v
+                    pytest -v --junitxml=junit.xml
                 '''
             }
         }
@@ -45,6 +45,7 @@ pipeline {
 
     post {
         always {
+            junit 'junit.xml'
             echo 'CI pipeline completed.'
         }
 
