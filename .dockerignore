@@ -1,10 +1,12 @@
 .venv/
+.jenkins-venv/
+.git/
+.github/
 __pycache__/
-*.py[cod]
 .pytest_cache/
+*.pyc
+*.pyo
+*.pyd
 .coverage
 htmlcov/
-*.log
 .env
-.DS_Store
-database/*.db
